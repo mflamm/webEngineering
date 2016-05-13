@@ -1,0 +1,19 @@
+//
+   Created by Martin Flamm on 15.04.2016.
+
+doctype html
+html(lang="en")
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(type='text/javascript').
+            console.log("console log works")
+            if(locations.length > 0){
+                console.log("Array not empty")
+            }
+            else console.log("Array is empty")
+    body
+        block content
+
+        h1= title
+        p Welcome to #{title}

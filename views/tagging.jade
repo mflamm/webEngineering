@@ -1,0 +1,27 @@
+//
+   Created by Martin on 15.04.2016.
+
+doctype html
+html(lang="en")
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(type='text/javascript').
+            if (foo) {
+                bar(1 + 5)
+            }
+        body
+            block content
+
+            h1= title
+            p Welcome to #{title}
+
+            form(name="add-estimation", method="post")
+                div.input
+                    span.label Name:
+                    input(type="text", name="name")
+                div.input
+                    span.label Hashtag:
+                    input(type="text", name="hashtag")
+                div.actions
+                    input(type="submit", value="Tag Location")
