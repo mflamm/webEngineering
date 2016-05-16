@@ -1,42 +1,28 @@
 include mixins
 extends layout
+
 block content
     script(type='text/javascript').
-        var forms = require('../node_modules/forms');
-        var fields = forms.fields;
-        var validators = forms.validators;
 
-        var reg_form = forms.create({
-            lat: fields.string({ required: true, label: 'Latitude' }),
-            long: fields.string({ required: true, label: 'Longditude' }),
-            name: fields.string({ required: true, label: 'Name' }),
-            hash: fields.string({ required: true, label: 'Hash' })
-        });
-        reg_form.toHTML();
     body(style="padding-bottom:10rem;")
         .container
             .row
                 .col-lg-12.col-sm-12.col-xs-12
-                    +nav("Web Engineering", "dropdown_menu")
-                        +nav_item( "#" ) Home
-                        +nav_item( "./tagging", "active" ) Tagging
-                        +nav_item( "./discovery" ) Discover
-           .row
-               .col-lg-12.col-sm-12.col-xs-12
+                    +navbar("Web Engineering", "dropdown_menu")
+                        +nav_item( "./") Home
+                        +nav_item( "./tagging", "active") Tagging
+                        +nav_item( "./discovery") Discover
+            .row
+                .col-lg-12.col-sm-12.col-xs-12
+                        h2 Tagging a location
 
+            .row
+                .col-lg-4.col-sm-4.col-xs-4
+                .col-lg-4.col-sm-4.col-xs-4
+                    p: +input("text","tagName","e.g. HSKA","Name")
+                    p: +input("text","hashtag","e.g. #crazy","Hashtag")
+                    p: +a-btn-success("#") Tag this location
+                .col-lg-4.col-sm-4.col-xs-4
 
     script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
     script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
-//
-            h1= title
-            p Welcome to #{title}
-            form(name="add-estimation", method="post")
-                div.input
-                    span.label Name:
-                    input(type="text", name="name")
-                div.input
-                    span.label Hashtag:
-                    input(type="text", name="hashtag")
-                div.actions
-                    input(type="submit", value="Tag Location")
-

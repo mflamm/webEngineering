@@ -1,27 +1,25 @@
-include mixins
 extends layout
 block content
 
-    body(style="padding-bottom:10rem;")
+    body(style="padding-bottom:10rem;", data-spy="scroll",data-target=".scrollspy")
         .container
             .row
                 .col-lg-12.col-sm-12.col-xs-12
-                    +nav("Web Engineering", "dropdown_menu")
-                        +nav_item( "#", "active" ) Home
+                    +navbar("Web Engineering", "dropdown_menu")
+                        +nav_item( "./", "active" ) Home
                         +nav_item( "./tagging" ) Tagging
                         +nav_item( "./discovery" ) Discover
-
             .row
                 .col-lg-8.col-sm-8.col-xs-12
                     .jumbotron
                         h2 GeoTagging App
                         p(style="font-size: 18px;") Diese App verwaltet GeoTags (= Locations mit Hashtags). Über ein Formular können jederzeit der Name sowie ein Hashtag für den aktuellen Ort registriert werden. Locations beziehen sich auf den aktuellen Ort des Browsers.Geo Tags können über Name, Hashtag oder Umkreis gesucht werden.
-                        p: +button("primary", "//ilias.hs-karlsruhe.de/ilias.php?ref_id=164526&cmd=view&cmdClass=ilrepositorygui&cmdNode=mv&baseClass=ilrepositorygui", "medium") Ilias Link
+                        +nav-pills([{text:"Ilias Link",href:"//ilias.hs-karlsruhe.de/ilias.php?ref_id=164526&cmd=view&cmdClass=ilrepositorygui&cmdNode=mv&baseClass=ilrepositorygui"}],0)
 
                 .col-lg-4.col-sm-4.col-xs-12
-                    +panel("Newest Tags", "primary")
+                    +panel-primary("Latest tags")
                         p today 20:39 - Lat: xxxx, Long: xxx - #crazy
                         p today 20:35 - Lat: xxxx, Long: xxx - #crazy
 
-    script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
-    script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
+    script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js' )
+    script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' )
