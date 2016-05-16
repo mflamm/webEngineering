@@ -1,7 +1,18 @@
-doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+include ../node_modules/jade-bootstrap/_bootstrap
+
+doctype
+html( lang="en" )
+    head
+        title= title
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+        meta(name="author",content="Martin Flamm")
+        link(rel="icon",href="../../favicon.ico")
+
+    //- Bootswatch Theme
+    +bootswatch("superhero")
+
     block content
+
