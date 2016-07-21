@@ -1,18 +1,40 @@
 //
    Created by Martin Flamm on 15.04.2016.
 
-doctype html
-html(lang="en")
-    head
-        title= title
-        link(rel='stylesheet', href='/stylesheets/style.css')
-        script(type='text/javascript').
-            if(locations.length > 0){
-                console.log("Array not empty")
-            }
-            else console.log("Array is empty")
-    body
-        block content
+extends layout
+block content
 
-        h1= title
-        p Welcome to #{title}
+    body(style="padding-bottom:10rem;", data-spy="scroll",data-target=".scrollspy")
+        .container
+            .row
+                .col-lg-12.col-sm-12.col-xs-12
+                    +navbar("Web Engineering", "dropdown_menu")
+                        +nav_item( "./" ) Home
+                        +nav_item( "./tagging") Tagging
+                        +nav_item( "./discovery", "active") Discover
+            .row
+                .col-lg-12.col-sm-12.col-xs-12
+                    .well
+                        h2= title
+
+            .row
+                .col-lg-3.col-sm-3
+                .col-lg-6.col-sm-6.col-xs-12
+                    .well
+                        form#formular(action="/api/locations", method="get",name='form')
+                            +input("text","keyword","e.g. HSKA","Filter")
+                            +submit("Search","success")
+            <br>
+            .row
+                .col-lg-2.col-sm-2
+                .col-lg-8.col-sm-8.col-xs-12
+                    +panel-primary("Search Result")
+                        //<table class="table-striped">
+                        //+table-striped(["Name","Hashtag","Laditude","Longditude"],locationsNew)
+                            //locationsNew
+                        //<table
+                        +table-striped(["Name","Hashtag","Latitude","longitude"],locations,"list")
+    //script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
+    script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
+    script(language="JavaScript" type="text/javascript" src="/javascripts/jquery-3.0.0.min.js")
+    script(type='text/javascript', src='/javascripts/discoveryModel.js')

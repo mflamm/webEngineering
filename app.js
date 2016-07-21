@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var apis = require('./routes/apis');
 
 var app = express();
 
@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/api', apis);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -33,6 +33,15 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
+
+// getting some stats
+//app.get('/tagging', function(req, res, next) {
+ // client.incr('counter', function(err, counter) {
+  //  if(err) return next(err);
+   // res.send('This page has been viewed ' + counter + ' times!');
+  //});
+//});
+// end stats
 
 // development error handler
 // will print stacktrace

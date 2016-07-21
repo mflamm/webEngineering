@@ -1,28 +1,35 @@
-include mixins
 extends layout
-
 block content
-    script(type='text/javascript').
 
-    body(style="padding-bottom:10rem;")
+    body(style="padding-bottom:10rem;", data-spy="scroll",data-target=".scrollspy")
         .container
             .row
                 .col-lg-12.col-sm-12.col-xs-12
                     +navbar("Web Engineering", "dropdown_menu")
-                        +nav_item( "./") Home
-                        +nav_item( "./tagging", "active") Tagging
-                        +nav_item( "./discovery") Discover
+                        +nav_item( "./" ) Home
+                        +nav_item( "./tagging", "active" ) Tagging
+                        +nav_item( "./discovery" ) Discover
+
             .row
                 .col-lg-12.col-sm-12.col-xs-12
+                    .well
                         h2 Tagging a location
 
             .row
                 .col-lg-4.col-sm-4.col-xs-4
                 .col-lg-4.col-sm-4.col-xs-4
-                    p: +input("text","tagName","e.g. HSKA","Name")
-                    p: +input("text","hashtag","e.g. #crazy","Hashtag")
-                    p: +a-btn-success("#") Tag this location
+                    .well
+                        form#formular(action='/api/locations', method='post',name='form')
+                            +input("text","name","e.g. HSKA","Name")
+                            +input("text","hashtag","e.g. #crazy","Hashtag")
+                            +input("text","lat","e.g. 49.01379","Latitude")
+                            +input("text","long","e.g. 8.404435","longitude")
+                            +submit("Tag this location","success")
+
+                    div#responseStatus
                 .col-lg-4.col-sm-4.col-xs-4
 
     script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
     script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
+    //script(language="JavaScript" type="text/javascript" src="/javascripts/jquery-3.0.0.min.js")
+    script(type='text/javascript', src='/javascripts/taggingModel.js')
